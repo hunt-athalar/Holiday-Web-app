@@ -1,0 +1,31 @@
+/* * Purpose: Styles the plannedVacation.html
+* Author: Lee Jia Jing
+* Last Modified: 14-Oct-2021 */
+
+/* fonts */
+h7 
+{
+    color: blanchedalmond;
+}
+span 
+{
+    color: aliceblue;
+}
+#pageTitle 
+{
+    display:block;
+    color: aliceblue;
+}
+#bookings 
+{
+    display:block;
+    color: aliceblue;
+}
+
+/* vacation table container */
+#vacationContainer 
+{
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+}

@@ -1,0 +1,130 @@
+/* * Purpose: Styles the startingSelection.html
+* Author: Lee Jia Jing
+* Last Modified: 14-Oct-2021 */
+
+/* edit select vehicle size */
+
+#vehiclePanel, .flip 
+{
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    margin: 40px;
+    background-color: rgba(253, 253, 253, 0.7);
+}
+
+.panelmod 
+{
+    border: 1px solid rgb(211, 91, 12);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 200px
+}
+
+h7 
+{
+    color: aliceblue;
+}
+
+span 
+{
+    color: aliceblue;
+}
+
+p 
+{
+    color: white;
+}
+
+h3 
+{
+    color: rosybrown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h4 
+{
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#description 
+{
+    color: black
+}
+
+/* Vehicle description */
+#description 
+{
+    text-align: center;
+    padding: 25px;
+}
+
+/* Progress Tracker */
+#proTrack0 
+{
+    text-align: center;
+}
+
+#proTrack1 
+{
+    display: inline-block
+}
+
+#proTrack2 
+{
+    display: block;
+    color: aliceblue;
+}
+
+#file 
+{
+    width: 300px
+}
+
+
+/* Vehicle Buttons */
+#button1, #button2, #button3, #button4 
+{
+    width:auto;
+    height:auto;
+    margin-right: auto;
+    display: block;
+}
+
+#button1style, #button2style, #button3style, #button4style 
+{
+    font-family: Trattatello, fantasy;
+    color: black;
+}
+
+#vehiDesc 
+{
+    text-align: left;
+    color:ivory;
+}
+
+
+/* searchbox */
+#searchBox 
+{
+    color:aliceblue
+}
+
+
+/* map */
+#map 
+{
+    width: 750px;
+    height: 400px;
+}
+
+
+/* confirm button */
+#confirmButton 
+{
+    width:auto;
+    height:50px;
+    margin-left: auto;
+    display: block;
+}

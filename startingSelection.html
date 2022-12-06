@@ -1,0 +1,181 @@
+<!-- 
+ Purpose: Provides a page for the user to select a vehicle and their starting locations.
+ Author: Lee Jia Jing
+ Last Modified: 14-Oct-2021
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GetAwayBloom</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!--For MapBox API-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- css links -->
+    <link rel="stylesheet" type="text/css" href="css/startingSelections.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="img/Logo2.png" />
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/config.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body scroll="no">
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"><img src="img/Logo2.png" style: width="100px" ; height="100px"
+                        ;>GetAwayBloom</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="splashPage.html"><button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <h7>Home</h7>
+                        </button></a>
+
+                    <a class="mdl-navigation__link" href="plannedVacation.html"><button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <h7>Planned Vacations</h7>
+                        </button></a>
+                </nav>
+            </div>
+        </header>
+        <div class="my-layout mdl-layout__drawer">
+            <span class="mdl-layout-title">Navigation Drawer</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="splashPage.html">
+                    <h7>Home</h7>
+                </a>
+                <a class="mdl-navigation__link" href="plannedVacation.html">
+                    <h7>Planned Vacations</h7>
+                </a>
+            </nav>
+        </div>
+
+
+        <main class="mdl-layout__content">
+            <!-- Load the `mapbox-gl-geocoder` plugin. -->
+            <script
+                src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+            <link rel="stylesheet"
+                href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+                type="text/css">
+
+            <!--Adds progress tracker-->
+            <div class="mdl-grid">
+                <div id="proTrack0" class="mdl-cell mdl-cell--12-col">
+                    <span id="proTrack1">
+                        <label id="proTrack2" for=" file">
+                            <h7>Progress Tracker</h7>
+                        </label>
+                        <progress id="file" value="25" max="100"> 25% </progress>
+                    </span>
+                </div>
+            </div>
+
+            <div class="mdl-grid">
+                <!--Vehicle Selection-->
+                <div class="mdl-cell mdl-cell--5-col">
+                    <div id="vehiclePanel" class="flip panelmod">
+                        <h4>
+                            <center>Select Vehicle</center>
+                        </h4>
+
+                        <!--sedan-->
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <button id="button1" value="false" onclick="selectVehicle(this.value, this.id)"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                    <h6 id="button1style">Sedan</h6>
+                                </button>
+                            </div>
+                            <div id= "description" class="mdl-cell mdl-cell--6-col">Range : 1000km</div>
+                            <div class="mdl-cell mdl-cell--3-col"><img src="img/sedan.png"
+                                    style="width:80px; height:80px;"></div>
+                        </div>
+
+                        <!--SUV-->
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <button id="button2" value="false" onclick="selectVehicle(this.value, this.id)"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                    <h6 id="button2style">SUV</h6>
+                                </button>
+                            </div>
+                            <div id= "description" class="mdl-cell mdl-cell--6-col">Range : 850km</div>
+                            <div class="mdl-cell mdl-cell--3-col"><img src="img/SUV.png"
+                                    style="width:80px; height:80px;">
+                            </div>
+                        </div>
+
+                        <!--Minivan-->
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <button id="button3" value="false" onclick="selectVehicle(this.value, this.id)"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                    <h6 id="button3style">Van</h6>
+                                </button>
+                            </div>
+                            <div id= "description" class="mdl-cell mdl-cell--6-col">Range : 600km</div>
+                            <div class="mdl-cell mdl-cell--3-col"><img src="img/minivan.png"
+                                    style="width:80px; height:80px;"></div>
+                        </div>
+
+                        <!--Minibus-->
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <button id="button4" value="false" onclick="selectVehicle(this.value, this.id)"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                    <h6 id="button4style">Minibus</h6>
+                                </button>
+                            </div>
+                            <div id= "description"  class="mdl-cell mdl-cell--6-col">Range : 450km</div>
+                            <div class="mdl-cell mdl-cell--3-col"><img src="img/minibus.jpg"
+                                    style="width:80px; height:80px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Map-->
+                <div class="mdl-cell mdl-cell--7-col">
+                    <h3>Select Your Starting Location</h3>
+                    <!--include searchbox for map-->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="mdl-textfield__input" id="searchBox">
+                        <label class="mdl-textfield__label" id="searchBox" for="sample3">Location
+                            Search...</label>
+                    </div>
+                    <!-- Search button -->
+                    <button onclick="searchLocation()"><i class="material-icons">search</i></button>
+                    <!-- Get current Location -->
+                    <button onclick="getUserCurrentLocationUsingGeolocation(currentLocation)"><i
+                            class="material-icons">location_searching</i></button>
+
+                    <!-- Insert Map -->
+                    <div id='map'></div>
+                    <pre id="coordinates" class="coordinates"></pre>
+                    <script src="js/startingSelection.js"></script>
+
+                    <!--Proceed to next page-->
+                    <button onclick="proceedToSelectLocations()"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="confirmButton">
+                        <h7><strong>Proceed to Select POIs</strong></h7>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

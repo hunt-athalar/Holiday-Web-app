@@ -1,0 +1,147 @@
+/* * Purpose: Styles the selectPOI.html
+* Author: Lee Jia Jing
+* Last Modified: 14-Oct-2021 */
+
+/* panels */
+#selPOIPanel, .flip 
+{
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    margin: 40px;
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.panelmod 
+{
+    border: 1px solid rgb(211, 91, 12);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 200px;
+}
+
+.center 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* category buttons */
+#POICats 
+{
+    padding-top: 0px;
+    color: seashell;
+    text-align: right;
+}
+
+.nearPOIs 
+{
+    display: block;
+    text-align: center;
+    border: 1px solid rgb(243, 193, 236);
+    margin: 0px;
+}
+
+/* fonts */
+p 
+{
+    color: black;
+}
+h7 
+{
+    color: blanchedalmond;
+}
+span 
+{
+    color: aliceblue;
+}
+h4 
+{
+    color: salmon;
+    font-family: 'Times New Roman', Times, serif;
+}
+h3 
+{
+    color: rosybrown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/* progress tracker */
+#proTrack0 {
+    text-align: center;
+}
+#proTrack1 {
+    display:inline-block
+}
+#proTrack2 {
+    display:block;
+    color: aliceblue;
+}
+#file {
+    width:300px;
+}
+
+
+/* map */
+#map2 {
+    width: 1500px;
+    height: 350px;
+}
+/* confirmation button */
+#confirmPOI {
+    width:auto;
+    height:auto;
+    min-width: initial;
+    color:blanchedalmond;
+    margin-left: auto;
+    display: block;
+}
+
+
+/* dialog in overlay */
+#dialog0 {
+    width:700px;
+    height:300px;
+}
+#dialog1 {
+    color:mintcream;
+}
+#proceedButton {
+    color:greenyellow;
+}
+#cancelButton {
+    color:lightsalmon;
+}
+
+/* table */
+#poiTableHead {
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    color:sandybrown;
+}
+td {
+    font-weight: bold;
+    color:yellowgreen;
+}
+#swap {
+    color:yellowgreen;
+}
+#swapDown, #swapUp, #remove {
+    width:fit-content;
+}
+.scroll {
+    width: auto;
+    height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+

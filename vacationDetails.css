@@ -1,0 +1,33 @@
+/* * Purpose: Styles the vacationDetails.html
+* Author: Lee Jia Jing
+* Last Modified: 14-Oct-2021 */
+
+/* font colours */
+h7 
+{
+    color: blanchedalmond;
+}
+span, a 
+{
+    color: aliceblue;
+}
+h4 
+{
+    display:block;
+    color: aliceblue;
+    text-align: left;
+}
+
+/* map */
+#map 
+{
+    height: 330px;
+    width: 580px;
+}
+
+#detailsContainer 
+{
+    font-weight: bold;
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.75);
+}

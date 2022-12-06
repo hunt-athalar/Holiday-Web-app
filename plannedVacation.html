@@ -1,0 +1,86 @@
+<!-- 
+ Purpose: Details all previously planned vacations in order.
+ Author: Nicole Ng
+ Last Modified: 14-Oct-2021
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GetAwayBloom</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/assignment2.css">
+    
+    <!-- css links -->
+    <link rel="stylesheet" type="text/css" href="css/plannedVacation.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Mapbox API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/config.js"></script>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="img/Logo2.png"/>
+</head>
+
+<body>
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title" ><img src="img/Logo2.png" style: width="100px" ; height="100px"
+                        ; >GetAwayBloom</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="splashPage.html"><button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <h7>Home</h7>
+                        </button></a>
+                </nav>
+                
+            </div>
+        </header>
+        <div class="my-layout mdl-layout__drawer">
+            <span class="mdl-layout-title">Navigation Drawer</span>
+            <nav class="mdl-navigation">
+                <!--Navigation Panel-->
+                <a style="color: aliceblue;" class="mdl-navigation__link" href="splashPage.html"><h7>Home</h7></a>
+                <a style="color: aliceblue;" class="mdl-navigation__link" href="plannedVacation.html"><h7>Planned Vacations</h7></a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <!--Main page content goes here-->
+            <div>
+                <!--Page headings-->
+                <div class="mdl-grid">
+                    <div  class="mdl-cell mdl-cell--12-col">
+                        <label id="pageTitle" for=" file"><center><h3>Planned Vacations</h3></center></label>
+                        <label id="bookings" for=" file"><h4>All Bookings</h4></label>       
+                    </div>
+                </div>
+                
+            </div>
+            <!--Vacation summary table-->
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col" class="scroll">
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id = "vacationContainer" >    
+                    </table>   
+                </div>
+            </div>   
+
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/plannedVacation.js"></script>
+</body>
+</html>

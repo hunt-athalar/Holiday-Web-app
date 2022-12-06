@@ -1,0 +1,222 @@
+<!-- 
+ Purpose: Allows users to select their POIs and confirm their vacation planning.
+ Author: Lee Jia Jing
+ Last Modified: 14-Oct-2021
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GetAwayBloom</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.yellow-lime.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css links -->
+    <link rel="stylesheet" type="text/css" href="css/selectPOI.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Mapbox API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/config.js"></script>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="img/Logo2.png" />
+</head>
+
+<body>
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"><img src="img/Logo2.png" style: width="100px" ; height="100px"
+                        ;>GetAwayBloom</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="splashPage.html"><button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <h7>Home</h7>
+                        </button></a>
+
+                    <a class="mdl-navigation__link" href="plannedVacation.html"><button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <h7>Planned Vacations</h7>
+                        </button></a>
+                </nav>
+            </div>
+        </header>
+        <div class="my-layout mdl-layout__drawer">
+            <span class="mdl-layout-title">Navigation Drawer</span>
+            <nav class="mdl-navigation">
+                <!--Navigation Panel-->
+                <a class="mdl-navigation__link" href="splashPage.html">
+                    <h7>Home</h7>
+                </a>
+                <a class="mdl-navigation__link" href="plannedVacation.html">
+                    <h7>Planned Vacations</h7>
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <!--Main page content goes here-->
+            <!-- Load the `mapbox-gl-geocoder` plugin. -->
+            <script
+                src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+            <link rel="stylesheet"
+                href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+                type="text/css">
+
+            <!--Adds progress tracker-->
+            <div class="mdl-grid">
+                <div id="proTrack0" class="mdl-cell mdl-cell--12-col">
+                    <span id="proTrack1">
+                        <label id="proTrack2" for=" file">
+                            <h7>Progress Tracker</h7>
+                        </label>
+                        <progress id="file" value="66" max="100"> 66% </progress>
+                    </span>
+                </div>
+            </div>
+
+            <div class="mdl-grid">
+                <!--Selected POIs-->
+                <div class="mdl-cell mdl-cell--6-col">
+                    <h4>
+                        <center>Selected POIs</center>
+                    </h4>
+                    <div id="selPOIPanel" class="flip panelmod">
+                        <h7>Available Range (km): 
+                        <span id="rangeUpdate">0</span></h7>
+                        <br>
+                        <h7>Total Distance Travelled (km):</h7>
+                        <span id="totalDistanceTravelled">0</span>
+                    </div>
+                    <div id="poiTable" class="flip panelmod scroll">
+                        <table class="mdl-js-data-table">
+                            <div id="poiTableHead">
+                            <thead>
+                                <tr>
+                                  <th>No.</th>
+                                  <th>POI Name</th>
+                                  <th>Distance From Last Location</th>
+                                  <th colspan="2">Action</th>
+                                </tr> 
+                             </thead>
+                             </div>
+                            <div><tbody id="poiTableBody"></tbody></div>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Map -->
+                <div class="mdl-cell mdl-cell--6-col" id="POICats">
+                    <!-- Filter POIs -->
+                    <div class="mdl-grid">
+                        <div id="header">
+                            <h3>Select Your Point of Interests</h3>
+                        </div>
+                    </div>
+                    <div id=POICats class="mdl-grid">
+                        <div id=POICats class="mdl-cell mdl-cell--12-col">
+                            <span id="POICats">Filter POI by Category:</span>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="F&B"
+                                onclick="Food()">
+                                <img src="img/f&b.png" class="center">
+                            </button>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="accoms"
+                                onclick="Hotel()">
+                                <img src="img/hotel.jpg" class="center">
+                            </button>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="gas"
+                                onclick="Fuel()">
+                                <img src="img/fuel.png" class="center">
+                            </button>
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+                                id="attractions" onclick="Attractions()">
+                                <img src="img/attractions.png" class="center">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--Map-->
+                    <div>
+                        <!--include searchbox for map-->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text" class="mdl-textfield__input" id="searchBox">
+                            <label class="mdl-textfield__label" id="areaSearch" for="sample3">Location
+                                Search...</label>
+                        </div>
+                        <!-- Search button -->
+                    <button onclick="searchLocation()"><i class="material-icons">search</i></button>
+                    <!-- Get current Location -->
+                    <button onclick="getUserCurrentLocationUsingGeolocation(currentLocation)"><i
+                            class="material-icons">location_searching</i></button>
+
+
+
+
+                    
+                    <!-- The map -->
+                    <div class="mdl-grid">
+                        <div id='map2'></div>
+                        <pre id="coordinates" class="coordinates"></pre>
+                        <!-- <script src="js/selectPOI.js"></script> -->
+                    </div>
+
+                    
+
+
+                    <!-- Confirmation Button -->
+                    <div class="mdl-grid">
+                        <button id='confirmPOI' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                            onclick="on()">
+                            <h5>Confirm</h5>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Overlay for Name and Date and confirmation -->
+                <div id="overlay">
+                    <div id="overlayText">
+                        <!-- Show Dialog in Overlay -->
+                        <dialog id="dialog0" class="mdl-dialog">
+                            <h4 class="mdl-dialog__title" id="dialog1">
+                                <center>Key in Name and Date of Vacation</center>
+                            </h4>
+                            <div class="mdl-dialog__content">
+                                <!-- Enter Vacation Name -->
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                                    <input type="text" class="mdl-textfield__input" id="vacationName" style="color: white;">
+                                    <label id="vacationName" class="mdl-textfield__label" for="vacationName">Vacation Name</label>
+                                </div>
+
+                                <!-- Enter Vacation Date -->
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                                    <input type="date" class="mdl-textfield__input" id=vacationDate style="color: white;">
+                                    <label id="vacationDate" class="mdl-textfield__label" for="vacationDate">Vacation Date</label>
+                                </div>
+                            </div>
+                            <div class="mdl-dialog__actions">
+                                <button type="button" id="proceedButton" onclick="saveVacationDetailsToLS()" class="mdl-button">Proceed</button>
+                                <button type="button" id="cancelButton" onclick="cancelBooking()" class="mdl-button close">Cancel</button>
+                            </div>
+                        </dialog>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script src="js/selectPOI.js"></script>
+</body>
+
+</html>
